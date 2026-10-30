@@ -473,6 +473,17 @@ table.t th{background:#f2f0ea;font-weight:700}
 @media (max-width:700px){.rate-row{grid-template-columns:1fr}}
 .rate-row .seg-btn{min-width:44px}
 .team-line{font-size:.92rem;color:var(--idc-gris1);margin:.2rem 0}
+.howto{margin:0 0 16px;border:1.5px solid var(--idc-azul);border-radius:12px;background:#f6fafd;padding:0}
+.howto>summary{cursor:pointer;padding:10px 14px;font-weight:800;color:var(--idc-azul);list-style:none}
+.howto>summary::-webkit-details-marker{display:none}
+.howto>summary::after{content:" ▾";font-weight:400}
+.howto[open]>summary::after{content:" ▴"}
+.howto .hw{padding:0 16px 12px;font-size:.92rem;color:#173a52}
+.howto ol,.howto ul{margin:6px 0 8px;padding-left:22px}
+.howto li{margin:3px 0}
+.howto .done-if{margin:8px 0 0;padding:8px 12px;background:var(--verde-ok-bg);border-left:5px solid var(--verde-ok);border-radius:8px;color:#163f2b}
+.howto .warn{margin:8px 0 0;padding:8px 12px;background:var(--ambar-bg);border-left:5px solid var(--idc-amarillo);border-radius:8px;color:#4a3200}
+.howto code{font:600 .85em var(--mono);background:#e6eef5;padding:1px 5px;border-radius:4px}
 </style>
 </head>
 <body>
@@ -589,6 +600,12 @@ table.t th{background:#f2f0ea;font-weight:700}
     </div>
     <div class="st-body">
       <p class="lead">Escribe <b>tu nombre y tu correo</b> y los de tu equipo. Tus respuestas se guardan solas en este navegador; al final generarás el informe en PDF y en MD con tu nombre y el de tus compañeros.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><ol>
+<li>Escribe tus <b>nombres</b> y <b>apellidos</b> (mínimo 2 letras cada campo) y un <b>correo</b> con formato válido (<code>nombre@correo.com</code>).</li>
+<li>Escribe el <b>nombre del equipo</b> (mínimo 2 letras).</li>
+<li>Escribe al menos <b>2 compañeros</b> en «Integrante 2» e «Integrante 3». El integrante 4 es opcional.</li>
+<li>Pulsa <b>Registrar la mesa →</b>. Si un campo queda en rojo, el mensaje debajo indica qué corregir.</li></ol>
+<p class="done-if">✓ Se completa cuando aparece el mensaje «Mesa registrada». Se abre «Acuerdos y roles».</p></div></details>
       <div class="callout blue" id="resume" hidden>
         <p id="resumeTxt" style="margin:0"></p>
         <div class="btn-row"><button class="btn btn-primary btn-sm" type="button" id="resumeYes">▶ Continuar nuestro diagnóstico</button><button class="btn btn-outline btn-sm" type="button" id="resumeNo">Empezar de nuevo</button></div>
@@ -627,6 +644,11 @@ table.t th{background:#f2f0ea;font-weight:700}
     <p class="lock-note">🔒 Se desbloquea al completar el <b>Registro del equipo</b>.</p>
     <div class="st-body">
       <p class="lead">Repartan los roles. En un equipo de 3, una persona puede tener dos roles.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><ol>
+<li>En cada uno de los <b>4 roles</b> (moderador/a, secretario/a, cronometrista, vocero/a) elige un integrante en la lista desplegable. En un equipo de 3, una persona puede repetir.</li>
+<li>Marca las <b>3 casillas</b> de acuerdos.</li>
+<li>El botón <b>Iniciar el diagnóstico →</b> se activa solo cuando los 4 roles y las 3 casillas están completos. Púlsalo.</li></ol>
+<p class="done-if">✓ Se completa al pulsar «Iniciar el diagnóstico». Se abre el Paso 1.</p></div></details>
       <div class="roles">
         <div class="role"><label for="roleMod">🎙️ Moderador/a</label><small>Da la palabra y cuida que todos opinen.</small><select id="roleMod" data-role="mod"></select></div>
         <div class="role"><label for="roleSec">✍️ Secretario/a</label><small>Registra las respuestas del equipo en esta página.</small><select id="roleSec" data-role="sec"></select></div>
@@ -655,6 +677,18 @@ table.t th{background:#f2f0ea;font-weight:700}
     <p class="lock-note">🔒 Se desbloquea al completar los <b>Acuerdos del equipo</b>.</p>
     <div class="st-body">
       <p class="lead">Examinen cada pieza y contrasten sus anomalías con los números del reporte. <b>No busquen soluciones todavía</b>: concéntrense en la discrepancia entre el <span class="gl" data-term="objetivo" tabindex="0" role="button">valor objetivo</span> y el <span class="gl" data-term="medido" tabindex="0" role="button">valor medido</span>.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><p>Hay dos piezas: <b>A (camiseta)</b> y <b>B (llavero)</b>. Cada una se resuelve por separado, en este orden:</p>
+<ol>
+<li><b>Inspección:</b> toca los <b>3 puntos amarillos (●)</b> de la pieza. Cada punto tocado se marca con ✓ y su hallazgo aparece en la lista numerada debajo de la imagen.</li>
+<li><b>Observación escrita:</b> el cuadro de texto se habilita después de tocar los 3 puntos. Escribe lo que se ve en la pieza y lo que dice el reporte.</li>
+<li>Pulsa <b>Registrar observación</b>.</li></ol>
+<p>Para que la observación se acepte debe cumplir tres condiciones:</p>
+<ul>
+<li>Tener <b>50 caracteres o más</b> (el contador <code>0 / 50</code> lo indica).</li>
+<li>Incluir <b>al menos un número del reporte</b>. Pieza A: 160 °C, 20 s, 130 °C, 10 s. Pieza B: 210 °C, 175 °C.</li>
+<li><b>Solo describir, sin proponer soluciones.</b> Palabras como «hay que», «deberían», «subir», «bajar», «aumentar», «corregir», «cambiar», «ajustar» o «solución» generan un aviso. Si el texto en realidad solo describe, se puede pulsar «Registrar observación» otra vez y se acepta.</li></ul>
+<p><b>Ejemplo de respuesta válida (pieza A):</b> «El contorno del estampado se levanta y la película tiene grietas. El reporte indica 130 °C y 10 s medidos frente a 160 °C y 20 s de objetivo.»</p>
+<p class="done-if">✓ Se completa con los 6 puntos tocados (3 por pieza) y las 2 observaciones registradas. Se abre la Estación 2.</p></div></details>
       <div class="st-tools"><div class="timer" data-min="10" data-label="Paso 1"></div><span class="hint">Toquen los puntos amarillos (●) de cada pieza.</span></div>
       <h3>📁 Artes finales del pedido de camisetas</h3>
       <p class="hint">Así debía verse cada diseño. Compárenlos con la pieza A que llegó devuelta.</p>
@@ -743,6 +777,15 @@ table.t th{background:#f2f0ea;font-weight:700}
     <p class="lock-note">🔒 Se desbloquea al completar el <b>Paso 1 · Inspección y análisis del reporte</b>.</p>
     <div class="st-body">
       <p class="lead">Un buen diagnóstico separa tres cosas. Clasifiquen cada afirmación del expediente antes de hablar de causas.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><p><b>Parte 1 · Clasificación.</b> Hay 8 afirmaciones. Para cada una pulsa uno de los tres botones:</p>
+<ul>
+<li><b>👁 Observación:</b> se ve o se toca en la pieza, sin instrumentos.</li>
+<li><b>📊 Dato del reporte:</b> aparece como número en el reporte de control.</li>
+<li><b>💭 Inferencia:</b> nadie lo vio ni lo midió; se deduce.</li></ul>
+<p>Cada respuesta se corrige al instante. Si es incorrecta, ese botón se desactiva, aparece una pista y se elige entre los botones que quedan. La fila se pone en verde cuando se acierta.</p>
+<p><b>Parte 2 · Definición.</b> Cuando las 8 afirmaciones están en verde aparece la pregunta «¿Qué es una hipótesis de verificación?». Pulsa la definición que corresponde. Si fallas, esa opción se desactiva y puedes elegir otra.</p>
+<p>El bloque del video es material de apoyo para conversar en equipo: no se registra ni bloquea el avance.</p>
+<p class="done-if">✓ Se completa con las 8 afirmaciones clasificadas y la definición correcta elegida. Se abre el Paso 2.</p></div></details>
       <div class="legend-k"><span>👁 <b>Observación</b>: se ve o se toca en la pieza</span><span>📊 <b>Dato</b>: lo registra el reporte</span><span>💭 <b>Inferencia</b>: se deduce, nadie lo vio</span></div>
       <div class="card" id="video3dBlock" style="margin:18px 0 20px;background:#eef6fc;border-color:#cfe5f5">
         <h3 style="margin-top:0">🎥 Caso de apoyo · Problemas de impresión 3D</h3>
@@ -796,6 +839,16 @@ table.t th{background:#f2f0ea;font-weight:700}
     <p class="lock-note">🔒 Se desbloquea al completar la <b>Estación 2</b>.</p>
     <div class="st-body">
       <p class="lead">Debatan y ubiquen cada <span class="gl" data-term="causa" tabindex="0" role="button">causa probable</span> en su categoría. Toquen una causa y luego <b>«Ubicar aquí»</b> en la columna elegida. Después marcarán cuáles respalda el reporte con un número.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><p>Hay dos tableros: <b>Caso 1 (DTF)</b> y <b>Caso 2 (3D)</b>, cada uno con 6 causas. Cada tablero tiene dos fases.</p>
+<p><b>Fase 1 · Clasificar en categorías A, B, C o D.</b></p>
+<ol>
+<li>Toca una causa de la bandeja (queda resaltada).</li>
+<li>Pulsa <b>Ubicar aquí</b> en la columna elegida. Para moverla de nuevo, tócala y elige otra columna o «↩ Devolver aquí».</li>
+<li>Cuando las 6 causas están ubicadas se activa <b>Comprobar clasificación</b>. Las bien ubicadas quedan fijas con ✓; las incorrectas vuelven a la bandeja con una pista. Repite hasta ubicar las 6.</li></ol>
+<p><b>Fase 2 · Evidencia.</b> Debajo de cada causa aparecen dos botones: <b>📊 Respaldada por el reporte</b> (el reporte trae su número) o <b>❓ Por verificar</b> (el reporte no la mide). Marca uno en cada causa y pulsa <b>Comprobar evidencia</b>. Las incorrectas se desmarcan para volver a elegir.</p>
+<p><b>Pregunta final · Patrón del equipo.</b> Cuando los dos tableros están completos aparece la pregunta «¿En qué categoría están todas las causas respaldadas por el reporte?». Elige una letra.</p>
+<p class="warn">Dato de apoyo: el reporte solo mide la temperatura y el tiempo de la plancha (caso 1) y la temperatura de la boquilla (caso 2).</p>
+<p class="done-if">✓ Se completa con los dos tableros en «Clasificación y evidencia completas» y la pregunta del patrón respondida. Se abre el Paso 3.</p></div></details>
       <div class="st-tools"><div class="timer" data-min="20" data-label="Paso 2"></div></div>
       <div class="cats-info">
         <div class="cat-info"><b><span class="letter">A</span>Resolución / Archivo digital</b>Parámetros de diseño, RIP, densidad de puntos o rebanado (slicing).</div>
@@ -826,6 +879,21 @@ table.t th{background:#f2f0ea;font-weight:700}
     <p class="lock-note">🔒 Se desbloquea al completar el <b>Paso 2 · Clasificación de causas probables</b>.</p>
     <div class="st-body">
       <p class="lead">Para cada pieza, redacten una hipótesis estructurada. La lista de cotejo se ilumina a medida que escriben: úsenla como guía.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><p>Se escribe una hipótesis para cada caso. Cada tarjeta tiene 4 campos y todos son obligatorios:</p>
+<ol>
+<li><b>Variable crítica:</b> elige una causa del Paso 2 en la lista (u «Otra variable»).</li>
+<li><b>Defecto observado:</b> mínimo 15 caracteres. Ej.: «el contorno del transfer se levanta y se agrieta».</li>
+<li><b>Pregunta 1:</b> qué parámetro no se verificó. Mínimo 40 caracteres.</li>
+<li><b>Pregunta 2:</b> por qué eso causó la falla. Mínimo 40 caracteres.</li></ol>
+<p>Debajo hay una <b>lista de 4 criterios</b> que se marca con ✓ mientras escribes. Solo se revisa el texto de las <b>preguntas 1 y 2</b>; el campo «Defecto observado» no cuenta. <b>Se necesitan al menos 3 de los 4 criterios</b> para registrar la hipótesis:</p>
+<ul>
+<li><b>Parámetro:</b> nombrar, por ejemplo, temperatura, tiempo, presión, plancha, plato, boquilla, sensor, termistor o calibración.</li>
+<li><b>Valores del reporte:</b> escribir al menos un número del reporte como número aislado: 130, 160, 10, 20, 175 o 210.</li>
+<li><b>Mecanismo físico:</b> usar palabras como funde/fusión, licúa, penetra, adhesión, derrite, unión o enlace.</li>
+<li><b>Falla observada:</b> usar palabras como delaminación, grietas, se desprende, se levanta, se separa, fractura, se rompe, frágil o se despega.</li></ul>
+<p>Las tildes no afectan la revisión. Con 4 criterios se obtiene el puntaje completo; con 3 se registra igual.</p>
+<p><b>Ejemplo (caso 1):</b> Pregunta 1: «No se verificó la temperatura del plato: midió 130 °C frente a 160 °C de objetivo, y el tiempo fue 10 s en vez de 20 s.» Pregunta 2: «A 130 °C el adhesivo TPU no se funde ni penetra en las fibras, por eso el transfer se levanta y se agrieta.»</p>
+<p class="done-if">✓ Se completa con las dos hipótesis registradas (caso 1 y caso 2). Se abre la Estación 5.</p></div></details>
       <div class="st-tools"><div class="timer" data-min="15" data-label="Paso 3"></div></div>
       <p class="scaffold"><b>Pista de redacción:</b> «Antes de producir no se verificó <i>[parámetro]</i> (<i>[medido]</i> frente a <i>[objetivo]</i>). Por eso <i>[mecanismo]</i>, y la pieza <i>[falla observada]</i>.»</p>
       <div class="grid2">
@@ -865,6 +933,13 @@ table.t th{background:#f2f0ea;font-weight:700}
     <p class="lock-note">🔒 Se desbloquea al completar el <b>Paso 3 · Hipótesis de verificación</b>.</p>
     <div class="st-body">
       <p class="lead">Tres palabras sostienen todo su diagnóstico. Reconstrúyanlas: escríbanlas o tóquenlas ficha por ficha.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><p>Hay 3 palabras para reconstruir. Cada una tiene una pista con su definición.</p>
+<ol>
+<li>Escribe la palabra en el cuadro o toca las fichas en orden: cada ficha tocada agrega su letra y se desactiva.</li>
+<li>Pulsa <b>Comprobar</b> (o Enter).</li>
+<li>Si te equivocas: <b>Borrar</b> limpia el cuadro y reactiva las fichas; <b>Volver a mezclar</b> cambia el orden de las letras.</li></ol>
+<p>No importan las tildes ni las mayúsculas: «hipotesis» vale igual que «HIPÓTESIS». Desde el segundo intento la pista indica la primera letra, y desde el tercero, las dos primeras.</p>
+<p class="done-if">✓ Se completa con las 3 palabras resueltas. Se abre la Matriz del equipo y plenaria.</p></div></details>
       <div id="anaList"></div>
     </div>
   </div>
@@ -881,6 +956,17 @@ table.t th{background:#f2f0ea;font-weight:700}
     <p class="lock-note">🔒 Se desbloquea al completar la <b>Estación 5 · Las palabras del diagnóstico</b>.</p>
     <div class="st-body">
       <p class="lead">Esta es la matriz que construyó su equipo. El vocero o la vocera la presentará en la plenaria.</p>
+      <details class="howto" open><summary>📘 Cómo se responde esta parte</summary><div class="hw"><p>La matriz se llena sola con las respuestas de los pasos anteriores. Para cerrar hay que completar <b>6 elementos</b>; la línea «Falta:» junto al botón final indica los pendientes.</p>
+<ol>
+<li><b>Comparación:</b> pulsa <b>🔍 Comparar con la matriz de referencia</b>, escribe la comparación (mínimo 60 caracteres) y pulsa <b>Registrar comparación</b>.</li>
+<li><b>Respuesta 1</b> de la plenaria: mínimo 60 caracteres y <b>Registrar respuesta 1</b>.</li>
+<li><b>Respuesta 2</b> de la plenaria: mínimo 60 caracteres y <b>Registrar respuesta 2</b>.</li>
+<li><b>Lista de chequeo:</b> marca ítems sugeridos y/o escribe ítems propios (mínimo 5 caracteres cada uno, con <b>+ Agregar</b>). Se necesitan <b>3 ítems o más</b> en total. Luego pulsa <b>Registrar lista de chequeo</b>.</li>
+<li><b>Coevaluación:</b> elige una valoración (1 a 4) en <b>cada una de las 4 afirmaciones</b>.</li>
+<li><b>Ticket de salida:</b> elige un nivel del 1 al 4.</li></ol>
+<p>El botón <b>🏁 Registrar cierre</b> se activa cuando los 6 elementos están completos.</p>
+<p class="warn">Los textos se guardan solo al pulsar su botón «Registrar». Un texto escrito sin registrar no cuenta para el cierre.</p>
+<p class="done-if">✓ Se completa al pulsar «Registrar cierre». Aparece la sección del informe (PDF y MD).</p></div></details>
       <div class="card">
         <h3 style="margin-top:0">📋 Matriz de análisis de <span id="teamName">su equipo</span></h3>
         <div class="tbl-wrap"><table class="t matrix" id="teamMatrix"></table></div>
